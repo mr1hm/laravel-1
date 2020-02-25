@@ -61,6 +61,10 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            small {
+                font-size: 12px;
+            }
         </style>
     </head>
     <body>
@@ -81,7 +85,8 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    MFour
+                    <small>Software Engineer Assessment</small>
                 </div>
 
                 <div class="links">
