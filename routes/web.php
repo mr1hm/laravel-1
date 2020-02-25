@@ -12,5 +12,27 @@
 */
 
 Route::get('/', function () {
+
     return view('welcome');
+
+});
+
+Route::get('/users', function () {
+
+    $users = DB::table('users')->get();
+
+    return view('users', compact('users'));
+
+});
+
+Route::post('/users/create', function () {
+
+
+
+});
+
+Route::post('/users/update/{id}', function () {
+
+
+
 });
