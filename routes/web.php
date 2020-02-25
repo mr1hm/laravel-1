@@ -21,9 +21,11 @@ Route::get('/', function () {
 
 Route::get('/users', function () {
 
-    $users = DB::table('users')->get();
+    // $users = DB::table('users')->get();
 
-    return view('users.usersList', compact('users'));
+    $users = Users::all();
+
+    return view('users.userOperations', compact('users'));
 
 });
 
@@ -35,7 +37,9 @@ Route::post('/users/create', function () {
 
 Route::post('/users/update/{id}', function ($id) {
 
-    $user = DB::table('users')->find($id);
+    // $user = DB::table('users')->find($id);
+
+    $user = Users::find($id);
 
     dd($id);
 
