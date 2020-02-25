@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Users List</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -40,9 +40,9 @@
                 top: 18px;
             }
 
-            .content {
+            /* .content {
                 text-align: center;
-            }
+            } */
 
             .title {
                 font-size: 84px;
@@ -68,7 +68,7 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        <div class="position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
@@ -83,14 +83,23 @@
                 </div>
             @endif
 
-            <div class="content">
-                <div class="title m-b-md">
+            <div class="container">
+                <div class="row title">
                     MFour
                     <small>Software Engineer Assessment</small>
                 </div>
 
-                <div class="links">
-                    <a href="/users">User Operations</a>
+                <!-- <div class="links">
+                    <a href="/users">Get Users</a>
+                    <a href="/users/create">Create User</a>
+                    <a href="/users/update/{id}">Update User</a>
+                </div> -->
+
+                <div class="users">
+                <h2>Users List</h2>
+                  @foreach ($users as $user)
+                    <li>{{$user->first_name}}</li>
+                  @endforeach
                 </div>
             </div>
         </div>
