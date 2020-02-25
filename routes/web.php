@@ -21,7 +21,7 @@ Route::get('/users', function () {
 
     $users = DB::table('users')->get();
 
-    return view('users', compact('users'));
+    return view('users.usersList', compact('users'));
 
 });
 
