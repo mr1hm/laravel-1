@@ -31,8 +31,10 @@ Route::post('/users/create', function () {
 
 });
 
-Route::post('/users/update/{id}', function () {
+Route::post('/users/update/{id}', function ($id) {
 
+    $user = DB::table('users')->find($id);
 
+    dd($id);
 
 });
