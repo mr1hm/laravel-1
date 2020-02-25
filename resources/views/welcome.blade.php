@@ -90,9 +90,7 @@
                 </div>
 
                 <div class="links">
-                    <a href="/users">Get Users</a>
-                    <a href="/users/create">Create User</a>
-                    <a href="/users/update/{id}">Update User</a>
+                    <a href="/users">User Operations</a>
                 </div>
             </div>
         </div>
