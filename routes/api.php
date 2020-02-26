@@ -14,6 +14,18 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+Route::get('/users', 'UsersController@index');
+
+Route::get('/users/create', 'UsersController@create');
+
+Route::post('/users', 'UsersController@store');
+
+Route::get('/users/{userID}', 'UsersController@show');
+
+Route::get('/users/{user}/edit', 'UsersController@edit');
+
+Route::post('/users/update/{user}', 'UsersController@update');
