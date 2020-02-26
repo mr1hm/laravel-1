@@ -30,6 +30,16 @@
             </form>
 
         </div>
+
+    @if (session()->has('message'))
+            <div class="offset-4 col-4 alert alert-success text-center confirmation">
+                {{ session()->get('message') }}
+            </div>
+            <div class="col-12">
+                <a class="btn btn-dark" href="/users">Back To Users</a>
+            </div>
+    @endif
+
     </section>
 
 @endsection
