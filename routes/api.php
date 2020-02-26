@@ -18,14 +18,14 @@ use Illuminate\Http\Request;
 //     return $request->user();
 // });
 
-Route::get('/users', 'UsersController@index');
+Route::get('/users', 'UsersApiController@index');
 
-Route::get('/users/create', 'UsersController@create');
+Route::get('/users/create', 'UsersApiController@create');
 
-Route::post('/users', 'UsersController@store');
+Route::post('/users', 'UsersApiController@store');
 
-Route::get('/users/{userID}', 'UsersController@show');
+Route::get('/users/{userID}', 'UsersApiController@show');
 
-Route::get('/users/{user}/edit', 'UsersController@edit');
+Route::get('/users/{user}/edit', 'UsersApiController@edit');
 
-Route::post('/users/update/{user}', 'UsersController@update');
+Route::post('/users/update/{user}', 'UsersApiController@update');

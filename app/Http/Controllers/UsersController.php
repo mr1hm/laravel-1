@@ -17,9 +17,9 @@ class UsersController extends Controller
         $users = Users::all();
 
         // Get JSON Payload
-        return response($users, 200);
+        // return response($users, 200);
         // Serve HTML Document
-        // return view('users.view', compact('users'));
+        return view('users.view', compact('users'));
 
     }
 
