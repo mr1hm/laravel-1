@@ -1,0 +1,5 @@
+GET http://laravel-1.test/api/users
+
+###
+
+GET http://laravel-1.test/api/users/16
