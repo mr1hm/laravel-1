@@ -98,7 +98,7 @@ class UsersController extends Controller
     public function update(Request $request, Users $user)
     {
 
-        // dd('hit');
+        //dd('hit');
         $this->validate($request, [
             'first_name' => 'required',
             'last_name' => 'required',
