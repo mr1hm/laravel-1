@@ -22,8 +22,8 @@
         <td class="table-header">Email</td>
         <td class="table-header">Profile</td>
       </thead>
-      <hr>
       <tbody>
+
         @foreach ($users as $user)
           <tr>
             <td class="inner-table">{{ $user->id }}</td>
@@ -33,6 +33,7 @@
             <td class="inner-table"><a class="btn btn-dark" href="/users/{{$user->id}}">Profile</a></td>
           </tr>
         @endforeach
+
       </tbody>
     </table>
   </div>
