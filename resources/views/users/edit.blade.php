@@ -5,6 +5,8 @@
     <section class="row text-center edit">
         <div class="col-12">
 
+            <h1>Update User</h1>
+            <hr>
             <form class="row flex-column align-items-center" method="post" action="/users/update/{{$user->id}}">
                 @csrf
                 <!-- {{ method_field('patch') }} -->
