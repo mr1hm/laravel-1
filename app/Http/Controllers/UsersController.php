@@ -16,7 +16,10 @@ class UsersController extends Controller
     {
         $users = Users::all();
 
-        return view('users.view', compact('users'));
+        // Get JSON Payload
+        return response($users, 200);
+        // Serve HTML Document
+        // return view('users.view', compact('users'));
 
     }
 
@@ -65,8 +68,10 @@ class UsersController extends Controller
      */
     public function show(Users $userID)
     {
-
-        return view('users.show', compact('userID'));
+        // Get JSON Payload
+        return response($userID, 200);
+        // Serve HTML Document
+        // return view('users.show', compact('userID'));
 
     }
 
