@@ -109,11 +109,7 @@ class UsersController extends Controller
 
         $user->save();
 
-        // $user->first_name = $data['first_name'];
-        // $user->last_name = $data['last_name'];
-        // $user->email = $data['email'];
-
-        return back();
+        return redirect()->back()->with('message', 'User successfully updated!');
 
     }
 
