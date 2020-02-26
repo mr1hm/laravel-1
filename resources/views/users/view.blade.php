@@ -2,9 +2,19 @@
 
 @section('content')
 
-  <div class="row flex-column content">
-    <h1>All Users</h1>
-    <table>
+  <div class="row flex-column content view-users">
+    <h1 class="col-12">All Users</h1>
+  </div>
+
+  @if (session()->has('message'))
+  <div class="offset-4 col-4 alert alert-success text-center confirmation">
+        {{ session()->get('message') }}
+  </div>
+  @endif
+
+  <hr>
+  <div class="row">
+    <table class="col-12">
       <thead style="font-weight: bold">
         <td class="table-header">ID</td>
         <td class="table-header">First Name</td>
