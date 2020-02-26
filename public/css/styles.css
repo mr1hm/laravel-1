@@ -50,6 +50,20 @@ html, body {
     margin-bottom: 30px;
 }
 
+.user-profile span {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.confirmation {
+    margin-top: 1em;
+}
+
+/* .view-users {
+    margin-top: 1em;
+} */
+
 button {
   margin-top: 0.5em;
 }
