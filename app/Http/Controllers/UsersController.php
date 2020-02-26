@@ -16,7 +16,8 @@ class UsersController extends Controller
     {
         $users = Users::all();
 
-        return view('view-users', ['allUsers' => $users]);
+        return view('users.view', compact('users'));
+
     }
 
     /**
@@ -26,7 +27,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        return view('createProduct');
+        return view('users.create');
     }
 
     /**
@@ -37,13 +38,23 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        Users::create([
-            'firstName' => $request->get('first_name'),
-            'lastName' => $request->get('last_name'),
+        $this->validate(request(), [
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required',
+        ]);
+
+        $user = Users::create([
+            'first_name' => $request->get('first_name'),
+            'last_name' => $request->get('last_name'),
             'email' => $request->get('email'),
         ]);
 
-        return redirect('/users');
+        $user->save();
+
+        $users = Users::all();
+
+        return view('users.view', compact('users'));
     }
 
     /**
@@ -52,9 +63,11 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Users $userID)
     {
-        //
+
+        return view('users.show', compact('userID'));
+
     }
 
     /**
@@ -63,9 +76,11 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Users $user)
     {
-        //
+
+        return view('users.edit', compact('user'));
+
     }
 
     /**
@@ -75,9 +90,26 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Users $user)
     {
-        //
+
+        // dd('hit');
+        $this->validate($request, [
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required',
+        ]);
+
+        $user->update($request->all());
+
+        $user->save();
+
+        // $user->first_name = $data['first_name'];
+        // $user->last_name = $data['last_name'];
+        // $user->email = $data['email'];
+
+        return back();
+
     }
 
     /**
