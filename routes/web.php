@@ -19,30 +19,18 @@ Route::get('/', function () {
 
 });
 
-Route::resource('/users', 'UsersController');
+// Route::resource('/users', 'UsersController');
 
-// Route::get('/users', function () {
+Route::get('/users', 'UsersController@index');
 
-//     // $users = DB::table('users')->get();
+Route::get('/users/create', 'UsersController@create');
 
-//     $users = Users::all();
+Route::post('/users', 'UsersController@store');
 
-//     return view('users.userOperations', compact('users'));
+Route::get('/users/{userID}', 'UsersController@show');
 
-// });
+Route::get('/users/{user}/edit', 'UsersController@edit');
 
-// Route::post('/users/create', function () {
+Route::post('/users/update/{user}', 'UsersController@update');
 
-
-
-// });
-
-// Route::post('/users/update/{id}', function ($id) {
-
-//     // $user = DB::table('users')->find($id);
-
-//     $user = Users::find($id);
-
-//     dd($id);
-
-// });
+?>
