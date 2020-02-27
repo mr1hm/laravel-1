@@ -46,12 +46,6 @@ class UsersApiController extends Controller
 
     public function updateUser(Request $request, Users $user) // Update A Specific User in the Database.
     {
-        // Validation
-        // $this->validate($request, [
-        //     'first_name' => 'required',
-        //     'last_name' => 'required',
-        //     'email' => 'required'
-        // ]);
 
         $user->update($request->all());
 
