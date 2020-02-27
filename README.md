@@ -130,7 +130,7 @@ Kevins-MacBook-Pro:laravel-1 kevinihm$
 
 ### The Control Flow
 
-Once a request is sent to a `route`, the `route` will call a method within the `UsersApiController`. The method will then validate required fields and then create a new user instance as defined by the `Users` model.
+Once a request is triggers a `route`, the `route` will call a method within the `UsersApiController`. The method will then validate required fields and then create a new user instance as defined by the `Users` model.
 
 #### `GET /api/users`
 
@@ -212,19 +212,34 @@ Updates a `user` from all recorded `users`, given an `id` in the request URL. _e
 ##### Example Request
 
 ```shell
-curl -X POST -H "Content-Type: application/json" -d '{"first_name": "Jane1", "last_name": "Doe", "email": "jdoe@example.com"}' http://laravel-1.test/api/users/update/3 | json_pp
+curl -X POST -H "Content-Type: application/json" -d '{"first_name": "Jane2", "last_name": "Doe1", "email": "jdoe1@example.com"}' http://laravel-1.test/api/users/update/3 | json_pp
+```
+Or send only the field you want to update:
+```shell
+curl -X POST -H "Content-Type: application/json" -d '{"email": "jdoe@example.com"}' http://laravel-1.test/api/users/update/3 | json_pp
 ```
 
 ##### Example Response Body
 
 ```json
 {
-   "id" : 3,
-   "updated_at" : "2020-02-27 00:02:13",
+   "last_name" : "Doe1",
    "created_at" : "2020-02-25 12:09:59",
+   "id" : 3,
+   "email" : "jdoe1@example.com",
+   "first_name" : "Jane2",
+   "updated_at" : "2020-02-27 03:20:37"
+}
+```
+Or using only the field you want to update
+```json
+{
+   "last_name" : "Doe1",
    "email" : "jdoe@example.com",
-   "first_name" : "Jane1",
-   "last_name" : "Doe"
+   "id" : 3,
+   "updated_at" : "2020-02-27 03:21:32",
+   "created_at" : "2020-02-25 12:09:59",
+   "first_name" : "Jane2"
 }
 ```
 
