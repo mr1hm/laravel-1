@@ -16,13 +16,13 @@ php artisan serve
   ```
 - You can simply visit http://localhost:8000 and you should see some rendered HTML.
 - If you do not have MySQL installed on your machine, you can use homebrew to install it:
-```shell
-brew install mysql
-```
+  ```shell
+  brew install mysql
+  ```
 - After installing MySQL, in terminal:
-```bash
-brew services start mysql
-```
+  ```bash
+  brew services start mysql
+  ```
 - Please import the provided "mfour_2020-02-26.sql" dump located in /database.
 #### Valet Setup (Mac OS _only_)
 Installing Valet is very quick and easy.
