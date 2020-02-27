@@ -20,25 +20,65 @@ php artisan serve
   brew install mysql
   ```
 - After installing MySQL, in terminal:
-  ```bash
+  ```shell
   brew services start mysql
   ```
-- Please import the provided "mfour_2020-02-26.sql" dump located in /database.
+- Import the provided "mfour_2020-02-26.sql" dump located in /database.
+  - In terminal:
+  ```shell
+  mysql -u root
+  ```
+  - Example Output:
+  ```shell
+  Welcome to the MySQL monitor.  Commands end with ; or \g.
+  Your MySQL connection id is 659
+  Server version: 5.7.29 Homebrew
+
+  Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+  Oracle is a registered trademark of Oracle Corporation and/or its
+  affiliates. Other names may be trademarks of their respective
+  owners.
+
+  Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+  mysql>
+  ```
+  - Then enter:
+  ```shell
+  mysql> create database mfour;
+  ```
+  - Lastly, we will import the .sql file. Please type `exit` into the terminal and hit enter.
+  - Once you are out of the mysql monitor, please make sure you are in the project's directory and in terminal:
+  ```shell
+  mysql -u root mfour < database/mfour_2020-02-26.sql
+  ```
+  - NOTE: If you are using a PHP version that's less than or equal to 7.2, you may need to change the root user auth method.
+    - You can do this with terminal:
+      - Enter MySQL monitor:
+      ```shell
+      mysql -u root
+      ```
+      - Then:
+      ```shell
+      mysql> alter user 'root'@'localhost' identified with mysql_native_password by 'root';
+      ```
+
 #### Valet Setup (Mac OS _only_)
 Installing Valet is very quick and easy.
 - Please make sure the `~/.composer/vendor/bin` directory is in your system's "PATH".
 - In terminal:
-```shell
-composer global require laravel/valet
-```
+  ```shell
+  composer global require laravel/valet
+  ```
 - Next, we will install Valet and DnsMasq, and register Valet's daemon to launch when your system starts. We can achieve this by running this simple command:
-```shell
-valet install
-```
+  ```shell
+  valet install
+  ```
 - To make sure Valet is working, you can ping any *.test domain through terminal:
-```shell
-ping cool.test
-```
+  ```shell
+  ping cool.test
+  ```
 ##### Example Output From Ping
 ```shell
 Kevins-MacBook-Pro:laravel-1 kevinihm$ ping cool.test
@@ -53,25 +93,24 @@ Kevins-MacBook-Pro:laravel-1 kevinihm$
 ```
 - Lastly, we need to tell Valet in which directory to look for our projects.
   - Change directory into the parent directory of the project's directory and type into terminal:
-  ```bash
+  ```shell
   valet park
   ```
   - Now, any project existing in this folder will accessible in our browser through http://_{directory name}_.test
 - If you're looking for some extra information you can visit this [link](https://laravel.com/docs/5.8/valet) and read through the installation section.
-- If you would like to view a simple fron-end that I built for the API, you can click [here](http://laravel-1.test) to open it in your browser.
 
 ## Getting Started
 
 1. Install all dependencies in `composer.json` with Composer.
-    ```bash
+    ```shell
     composer install
     ```
     or if you didn't want to add `~/.composer/vendor/bin` to your system's "PATH":
-    ```bash
+    ```shell
     php composer.phar install
 1. If you do not have composer installed, please follow the simple step-by-step guide [here](https://getcomposer.org/download/)
 1. Make sure you are in the project's root directory in terminal, please locate the .env.example file and make a new file ".env".
-    ```bash
+    ```shell
     cp .env.example .env
     ```
 1. We will change 3 things:
@@ -84,20 +123,31 @@ Kevins-MacBook-Pro:laravel-1 kevinihm$
 - User can view all current users in the database.
 - User can create a user.
 - User can update a user.
-<!-- - [User can delete a grade.](features/user-can-delete-a-grade.md) -->
+- If you would like to view a simple front-end that I built for the API, you can click [here](http://laravel-1.test) to open it in your browser.
 
 
 ## Server API
+
+### The Control Flow
+
+- Model -> /app/Users.php
+- View -> /resources/views
+- Controller -> /app/Http/Controllers/UsersApiController.php
+
+Once a request hits a `route`, the `route` will call a method within the `UsersApiController`.
+- GET requests will simply call the all() method from the `Users` model and return the data that exists in the database.
+- A POST request to create a new user will validate required fields, as well as make sure the email provided is unique, and then create a new user instance as defined by the `Users` model.
+- A POST request to update an existing user will validate that the value(s) for the provided fields are strings and that the email (if provided) is unique. It will then update the specific User's fields and save it to the database.
 
 #### `GET /api/users`
 
 Responds with all current `users` in the database.
 
 ##### Example Request
-
 ```shell
 curl -v http://laravel-1.test/api/users | json_pp
 ```
+- NOTE: "json_pp" is a Perl command utility.
 
 ##### Example Response Body
 
@@ -169,19 +219,34 @@ Updates a `user` from all recorded `users`, given an `id` in the request URL. _e
 ##### Example Request
 
 ```shell
-curl -X POST -H "Content-Type: application/json" -d '{"first_name": "Jane1", "last_name": "Doe", "email": "jdoe@example.com"}' http://laravel-1.test/api/users/update/3 | json_pp
+curl -X POST -H "Content-Type: application/json" -d '{"first_name": "Jane2", "last_name": "Doe1", "email": "jdoe1@example.com"}' http://laravel-1.test/api/users/update/3 | json_pp
+```
+Or send only the field you want to update:
+```shell
+curl -X POST -H "Content-Type: application/json" -d '{"email": "jdoe@example.com"}' http://laravel-1.test/api/users/update/3 | json_pp
 ```
 
 ##### Example Response Body
 
 ```json
 {
-   "id" : 3,
-   "updated_at" : "2020-02-27 00:02:13",
+   "last_name" : "Doe1",
    "created_at" : "2020-02-25 12:09:59",
+   "id" : 3,
+   "email" : "jdoe1@example.com",
+   "first_name" : "Jane2",
+   "updated_at" : "2020-02-27 03:20:37"
+}
+```
+Or using only the field you want to update
+```json
+{
+   "last_name" : "Doe1",
    "email" : "jdoe@example.com",
-   "first_name" : "Jane1",
-   "last_name" : "Doe"
+   "id" : 3,
+   "updated_at" : "2020-02-27 03:21:32",
+   "created_at" : "2020-02-25 12:09:59",
+   "first_name" : "Jane2"
 }
 ```
 
