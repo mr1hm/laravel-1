@@ -69,9 +69,9 @@ class UsersController extends Controller
     public function show(Users $userID)
     {
         // Get JSON Payload
-        return response($userID, 200);
+        // return response($userID, 200);
         // Serve HTML Document
-        // return view('users.show', compact('userID'));
+        return view('users.show', compact('userID'));
 
     }
 
@@ -98,7 +98,6 @@ class UsersController extends Controller
     public function update(Request $request, Users $user)
     {
 
-        //dd('hit');
         $this->validate($request, [
             'first_name' => 'required',
             'last_name' => 'required',

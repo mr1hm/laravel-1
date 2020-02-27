@@ -1,3 +1,215 @@
+# MFour Assessment
+
+A PHP Laravel CRUD API Backend utilizing a MySQL Database.
+
+## Introduction
+
+For this project, I will assume that PHP, Composer and MySQL are already installed on your machine.
+- I used Valet (Mac OS _only_) as my dev environment. If you are on windows, you can simply use:
+```shell
+php artisan serve
+```
+- This should output something like this:
+  ```shell
+  Laravel development server started: http://127.0.0.1:8000
+  ```
+You can simply visit http://localhost:8000 and you should see some rendered HTML.
+- If you do not have MySQL installed on your machine, you can use homebrew to install it:
+```shell
+brew install mysql
+```
+- After installing MySQL, in terminal:
+```bash
+brew services start mysql
+```
+- Please import the provided "mfour_2020-02-26.sql" dump located in /database.
+#### Valet Setup (Mac OS _only_)
+Installing Valet is very quick and easy.
+- Please make sure the `~/.composer/vendor/bin` directory is in your system's "PATH".
+- In terminal:
+```shell
+composer global require laravel/valet
+```
+- Next, we will install Valet and DnsMasq, and register Valet's daemon to launch when your system starts. We can achieve this by running this simple command:
+```shell
+valet install
+```
+- To make sure Valet is working, you can ping any *.test domain through terminal:
+```shell
+ping cool.test
+```
+##### Example Output From Ping
+```shell
+Kevins-MacBook-Pro:laravel-1 kevinihm$ ping cool.test
+PING cool.test (127.0.0.1): 56 data bytes
+64 bytes from 127.0.0.1: icmp_seq=0 ttl=64 time=0.025 ms
+64 bytes from 127.0.0.1: icmp_seq=1 ttl=64 time=0.055 ms
+64 bytes from 127.0.0.1: icmp_seq=2 ttl=64 time=0.090 ms
+--- cool.test ping statistics ---
+5 packets transmitted, 5 packets received, 0.0% packet loss
+round-trip min/avg/max/stddev = 0.025/0.068/0.090/0.025 ms
+Kevins-MacBook-Pro:laravel-1 kevinihm$
+```
+- Lastly, we need to tell Valet in which directory to look for our projects.
+  - Change directory into the parent directory of the project's directory and type into terminal:
+  ```bash
+  valet park
+  ```
+  - Now, any project existing in this folder will accessible in our browser through http://_{directory name}_.test
+- If you're looking for some extra information you can visit this [link](https://laravel.com/docs/5.8/valet) and read through the installation section.
+- If you would like to view a simple fron-end that I built for the API, you can click [here](http://laravel-1.test) to open it in your browser.
+
+## Getting Started
+
+1. Clone this repository to a directory of your choice.
+1. Install all dependencies in `composer.json` with Composer.
+    ```bash
+    composer install
+    ```
+    or if you didn't want to add `~/.composer/vendor/bin` to your system's "PATH":
+    ```bash
+    php composer.phar install
+1. If you do not have composer installed, please follow the simple step-by-step guide [here](https://getcomposer.org/download/)
+1. Make sure you are in the project's root directory in terminal, please locate the .env.example file and make a new file ".env".
+    ```bash
+    cp .env.example .env
+    ```
+1. We will change 3 things:
+    - DB_DATABASE = _mfour_
+    - DB_USERNAME = _root_
+    - DB_PASSWORD = _(If there is a value specified here, please remove it and leave it empty)_
+
+## Features
+
+- User can view all current users in the database.
+- User can create a user.
+- User can update a user.
+<!-- - [User can delete a grade.](features/user-can-delete-a-grade.md) -->
+
+
+## Server API
+
+#### `GET /api/users`
+
+Responds with all current `users` in the database.
+
+##### Example Request
+
+```shell
+curl -v http://laravel-1.test/api/users | json_pp
+```
+
+##### Example Response Body
+
+```json
+
+   {
+      "last_name" : "Ihm",
+      "first_name" : "Kevin",
+      "updated_at" : "2020-02-26 19:47:15",
+      "id" : 1,
+      "created_at" : "2020-02-25 11:32:44",
+      "email" : "kevinihm@gmail.com"
+   },
+   {
+      "last_name" : "Smith",
+      "first_name" : "John",
+      "updated_at" : null,
+      "id" : 2,
+      "created_at" : "2020-02-25 12:09:43",
+      "email" : "jsmith@example.com"
+   },
+   {
+      "first_name" : "Jane",
+      "updated_at" : null,
+      "id" : 3,
+      "created_at" : "2020-02-25 12:09:59",
+      "email" : "jdoe@example.com",
+      "last_name" : "Doe"
+   },
+]
+```
+
+#### `POST /api/users/create`
+
+Accepts a single `user` object in the request body and inserts it into the `users` table. Responds with the inserted `user`, including an auto-generated `id`.
+
+##### Example Request
+```shell
+curl -X POST -H "Content-Type: application/json" -d '{"first_name": "test-first", "last_name": "test-last", "email": "test-email@test.com"}' http://laravel-1.test/api/users/create | json_pp
+```
+
+##### Example Request Body
+
+```json
+{
+  "first_name": "test-first",
+  "last_name": "test-last",
+  "email": "test-email@test.com"
+}
+```
+
+##### Example Response Body
+
+```json
+{
+   "updated_at" : "2020-02-26 23:22:16",
+   "first_name" : "test-first",
+   "email" : "test4@let.com",
+   "created_at" : "2020-02-26 23:22:16",
+   "id" : 37,
+   "last_name" : "test-last"
+}
+```
+
+#### `POST /api/users/update/{userID}`
+
+Updates a `user` from all recorded `users`, given an `id` in the request URL. _e.g._ `/api/users/update/3`. Responds with the updated user.
+
+##### Example Request
+
+```shell
+curl -X POST -H "Content-Type: application/json" -d '{"first_name": "Jane1", "last_name": "Doe", "email": "jdoe@example.com"}' http://laravel-1.test/api/users/update/3 | json_pp
+```
+
+##### Example Response Body
+
+```json
+{
+   "id" : 3,
+   "updated_at" : "2020-02-27 00:02:13",
+   "created_at" : "2020-02-25 12:09:59",
+   "email" : "jdoe@example.com",
+   "first_name" : "Jane1",
+   "last_name" : "Doe"
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
 <p align="center">

@@ -7,15 +7,18 @@ use Illuminate\Http\Request;
 
 class UsersApiController extends Controller
 {
-    public function index()
+    public function index() // Get All Current Users in Database.
     {
+
         $users = Users::all();
 
         return response($users, 200);
+
     }
 
-    public function store()
+    public function store(Request $request) // Create New User.
     {
+
         $this->validate(request(), [
             'first_name' => 'required',
             'last_name' => 'required',
@@ -32,16 +35,32 @@ class UsersApiController extends Controller
 
         $users = Users::all();
 
-        return response($users, 200);
+
+        return response($user, 200);
+
     }
 
-    public function show($id)
+    public function show(Users $userID) // View A Specific User.
     {
-        //
+
+        return response($userID, 200);
+
     }
 
-    public function update(Request $request, Users $user)
+    public function update(Request $request, Users $user) // Update A Specific User.
     {
-        //
+
+        // $this->validate($request, [
+        //     'first_name' => 'required',
+        //     'last_name' => 'required',
+        //     'email' => 'required'
+        // ]);
+
+        $user->update($request->all());
+
+        $user->save();
+
+        return response($user, 200);
+
     }
 }
