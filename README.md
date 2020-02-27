@@ -20,10 +20,50 @@ php artisan serve
   brew install mysql
   ```
 - After installing MySQL, in terminal:
-  ```bash
+  ```shell
   brew services start mysql
   ```
-- Please import the provided "mfour_2020-02-26.sql" dump located in /database.
+- Import the provided "mfour_2020-02-26.sql" dump located in /database.
+  - In terminal:
+  ```shell
+  mysql -u root
+  ```
+  - Example Output:
+  ```shell
+  Welcome to the MySQL monitor.  Commands end with ; or \g.
+  Your MySQL connection id is 659
+  Server version: 5.7.29 Homebrew
+
+  Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+  Oracle is a registered trademark of Oracle Corporation and/or its
+  affiliates. Other names may be trademarks of their respective
+  owners.
+
+  Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+  mysql>
+  ```
+  - Then enter:
+  ```shell
+  mysql> create database mfour;
+  ```
+  - Lastly, we will import the .sql file. Please type `exit` into the terminal and hit enter.
+  - Once you are out of the mysql monitor, please make sure you are in the project's directory and in terminal:
+  ```shell
+  mysql -u root mfour < database/mfour_2020-02-26.sql
+  ```
+  - NOTE: If you are using a PHP version that's less than or equal to 7.2, you may need to change the root user auth method.
+    - You can do this with terminal:
+      - Enter MySQL monitor:
+      ```shell
+      mysql -u root
+      ```
+      - Then:
+      ```shell
+      mysql> alter user 'root'@'localhost' identified with mysql_native_password by 'root';
+      ```
+
 #### Valet Setup (Mac OS _only_)
 Installing Valet is very quick and easy.
 - Please make sure the `~/.composer/vendor/bin` directory is in your system's "PATH".
@@ -53,25 +93,25 @@ Kevins-MacBook-Pro:laravel-1 kevinihm$
 ```
 - Lastly, we need to tell Valet in which directory to look for our projects.
   - Change directory into the parent directory of the project's directory and type into terminal:
-  ```bash
+  ```shell
   valet park
   ```
   - Now, any project existing in this folder will accessible in our browser through http://_{directory name}_.test
 - If you're looking for some extra information you can visit this [link](https://laravel.com/docs/5.8/valet) and read through the installation section.
-- If you would like to view a simple fron-end that I built for the API, you can click [here](http://laravel-1.test) to open it in your browser.
+- If you would like to view a simple front-end that I built for the API, you can click [here](http://laravel-1.test) to open it in your browser.
 
 ## Getting Started
 
 1. Install all dependencies in `composer.json` with Composer.
-    ```bash
+    ```shell
     composer install
     ```
     or if you didn't want to add `~/.composer/vendor/bin` to your system's "PATH":
-    ```bash
+    ```shell
     php composer.phar install
 1. If you do not have composer installed, please follow the simple step-by-step guide [here](https://getcomposer.org/download/)
 1. Make sure you are in the project's root directory in terminal, please locate the .env.example file and make a new file ".env".
-    ```bash
+    ```shell
     cp .env.example .env
     ```
 1. We will change 3 things:
@@ -84,20 +124,23 @@ Kevins-MacBook-Pro:laravel-1 kevinihm$
 - User can view all current users in the database.
 - User can create a user.
 - User can update a user.
-<!-- - [User can delete a grade.](features/user-can-delete-a-grade.md) -->
 
 
 ## Server API
+
+### The Control Flow
+
+Once a request is sent to a `route`, the `route` will call a method within the `UsersApiController`. The method will then validate required fields and then create a new user instance as defined by the `Users` model.
 
 #### `GET /api/users`
 
 Responds with all current `users` in the database.
 
 ##### Example Request
-
 ```shell
 curl -v http://laravel-1.test/api/users | json_pp
 ```
+- NOTE: "json_pp" is a Perl command utility.
 
 ##### Example Response Body
 
