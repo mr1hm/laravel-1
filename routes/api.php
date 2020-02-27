@@ -18,6 +18,6 @@ Route::get('/users', 'UsersApiController@getAllUsers');
 
 Route::get('/users/{userID}', 'UsersApiController@getUser');
 
-Route::post('/users/create', 'UsersApiController@create');
+Route::post('/users/create', 'UsersApiController@createUser');
 
 Route::post('/users/update/{user}', 'UsersApiController@updateUser');
