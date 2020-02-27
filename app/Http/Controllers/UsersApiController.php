@@ -49,7 +49,7 @@ class UsersApiController extends Controller
 
     public function update(Request $request, Users $user) // Update A Specific User.
     {
-
+        // Validation
         // $this->validate($request, [
         //     'first_name' => 'required',
         //     'last_name' => 'required',

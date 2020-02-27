@@ -16,9 +16,6 @@ class UsersController extends Controller
     {
         $users = Users::all();
 
-        // Get JSON Payload
-        // return response($users, 200);
-        // Serve HTML Document
         return view('users.view', compact('users'));
 
     }
@@ -68,9 +65,7 @@ class UsersController extends Controller
      */
     public function show(Users $userID)
     {
-        // Get JSON Payload
-        // return response($userID, 200);
-        // Serve HTML Document
+
         return view('users.show', compact('userID'));
 
     }
