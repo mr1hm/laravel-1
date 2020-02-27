@@ -10,9 +10,9 @@ POST http://laravel-1.test/api/users/create
 content-type: application/json
 
 {
-  "first_name": "apiTest2",
+  "first_name": "apiTest12",
   "last_name": "random2",
-  "email": "random2@one.com"
+  "email": "random12@one.com"
 }
 
 ###

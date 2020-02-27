@@ -14,15 +14,13 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/users', 'UsersApiController@index');
+Route::get('/users', 'UsersApiController@getAllUsers');
 
-Route::post('/users/create', 'UsersApiController@store');
+Route::post('/users/create', 'UsersApiController@create');
 
-Route::get('/users/{userID}', 'UsersApiController@show');
+Route::get('/users/{userID}', 'UsersApiController@getUser');
 
-Route::get('/users/{user}/edit', 'UsersApiController@edit');
-
-Route::post('/users/update/{user}', 'UsersApiController@update');
+Route::post('/users/update/{user}', 'UsersApiController@updateUser');
 
 // If you would like to use the method override way using {{ method_field('PATCH') }}:
 // 1. Comment out the the Route::post('/users/update/{user}', ...) and uncomment the line of code underneath.
