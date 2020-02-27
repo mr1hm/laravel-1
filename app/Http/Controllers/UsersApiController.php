@@ -33,9 +33,6 @@ class UsersApiController extends Controller
 
         $user->save();
 
-        $users = Users::all();
-
-
         return response($user, 200);
 
     }
