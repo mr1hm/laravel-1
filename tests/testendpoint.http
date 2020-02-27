@@ -30,4 +30,4 @@ curl -X POST -H "Content-Type: application/json" -d '{"first_name": "hello", "la
 // cURL command to test updating a user.
 curl -X POST -H "Content-Type: application/json" -d '{"first_name": "Jane1", "last_name": "Doe", "email": "jdoe@example.com"}' http://laravel-1.test/api/users/update/3 | json_pp
 
-curl -X POST -H "Content-Type: application/json" -d '{"first_name": "Jane"}' http://laravel-1.test/api/users/update/3 | json_pp
+curl -X POST -H "Content-Type: application/json" -d '{"last_name": "Doe"}' http://laravel-1.test/api/users/update/3 | json_pp
