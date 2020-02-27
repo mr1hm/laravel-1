@@ -134,7 +134,7 @@ Kevins-MacBook-Pro:laravel-1 kevinihm$
 - View -> /resources/views
 - Controller -> /app/Http/Controllers/UsersApiController.php
 
-Once a request hits a `route`, the `route` will call a method within the `UsersApiController`.
+Once a request triggers a `route`, the `route` will call a method within the `UsersApiController`.
 - GET requests will simply call the all() method from the `Users` model and return the data that exists in the database.
 - A POST request to create a new user will validate required fields, as well as make sure the email provided is unique, and then create a new user instance as defined by the `Users` model.
 - A POST request to update an existing user will validate that the value(s) for the provided fields are strings and that the email (if provided) is unique. It will then update the specific User's fields and save it to the database.
