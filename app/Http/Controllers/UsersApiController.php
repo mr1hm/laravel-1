@@ -22,7 +22,7 @@ class UsersApiController extends Controller
         $this->validate(request(), [
             'first_name' => 'required',
             'last_name' => 'required',
-            'email' => 'required',
+            'email' => 'required|unique:users,email',
         ]);
 
         $user = Users::create([
@@ -46,6 +46,12 @@ class UsersApiController extends Controller
 
     public function updateUser(Request $request, Users $user) // Update A Specific User in the Database.
     {
+
+        $this->validate($request, [
+            'first_name' => 'string',
+            'last_name' => 'string',
+            'email' => 'string|unique:users,email',
+        ]);
 
         $user->update($request->all());
 

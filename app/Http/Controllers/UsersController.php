@@ -12,7 +12,7 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index() // Get All Users
     {
         $users = Users::all();
 
@@ -25,7 +25,7 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create() // Show User Creation View
     {
         return view('users.create');
     }
@@ -36,12 +36,12 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request) // Store New User In Database.
     {
         $this->validate(request(), [
             'first_name' => 'required',
             'last_name' => 'required',
-            'email' => 'required',
+            'email' => 'required|unique:users,email',
         ]);
 
         $user = Users::create([
@@ -63,7 +63,7 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Users $userID)
+    public function show(Users $userID) // Show User Data.
     {
 
         return view('users.show', compact('userID'));
@@ -76,7 +76,7 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Users $user)
+    public function edit(Users $user) // Show Edit User View.
     {
 
         return view('users.edit', compact('user'));
@@ -90,13 +90,13 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Users $user)
+    public function update(Request $request, Users $user) // Update User Data In Database.
     {
 
         $this->validate($request, [
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'email' => 'required',
+            'first_name' => 'string',
+            'last_name' => 'string',
+            'email' => 'string|unique:users,email',
         ]);
 
         $user->update($request->all());
