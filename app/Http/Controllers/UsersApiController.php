@@ -16,7 +16,7 @@ class UsersApiController extends Controller
 
     }
 
-    public function create(Request $request) // Create New User.
+    public function createUser(Request $request) // Create New User.
     {
 
         $this->validate(request(), [

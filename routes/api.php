@@ -16,7 +16,7 @@ use Illuminate\Http\Request;
 
 Route::get('/users', 'UsersApiController@getAllUsers');
 
-Route::post('/users/create', 'UsersApiController@create');
+Route::post('/users/create', 'UsersApiController@createUser');
 
 Route::get('/users/{userID}', 'UsersApiController@getUser');
 
