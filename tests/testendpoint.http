@@ -25,7 +25,7 @@ GET http://laravel-1.test/api/users/16
 
 
 // cURL command to test creating a new user.
-curl -X POST -H "Content-Type: application/json" -d '{"first_name": "hello", "last_name": "goodbye", "email": "test4@let.com"}' http://laravel-1.test/api/users/create | json_pp
+curl -X POST -H "Content-Type: application/json" -d '{"first_name": "John", "last_name": "Wayne", "email": "jwayne@example.com"}' http://laravel-1.test/api/users/create | json_pp
 
 // cURL command to test updating a user.
 curl -X POST -H "Content-Type: application/json" -d '{"first_name": "Jane1", "last_name": "Doe", "email": "jdoe@example.com"}' http://laravel-1.test/api/users/update/3 | json_pp
