@@ -7,7 +7,7 @@
 #
 # Host: localhost (MySQL 5.7.29)
 # Database: mfour
-# Generation Time: 2020-02-27 06:52:05 +0000
+# Generation Time: 2020-02-27 07:26:52 +0000
 # ************************************************************
 
 
@@ -84,13 +84,15 @@ INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `created_at`, `up
 VALUES
 	(1,'Kevin','Ihm','kevinihm@gmail.com','2020-02-27 03:35:59','2020-02-27 03:35:59'),
 	(2,'Taylor','Otwell','totwell@laravel.com','2020-02-27 03:36:32','2020-02-27 03:36:32'),
-	(3,'Bill','Gates','bgates@microsoft.com','2020-02-27 03:37:45','2020-02-27 03:37:45'),
+	(3,'Niklaus','Wirth','nwirth@pascal.com','2020-02-27 03:37:45','2020-02-27 07:04:42'),
 	(4,'Mahatma','Gandhi','mgandhi9@example.com','2020-02-27 03:38:17','2020-02-27 03:38:17'),
 	(5,'John','Smith','jsmith@example.com','2020-02-27 03:38:37','2020-02-27 03:38:37'),
 	(6,'Jane','Doe','jdoe@example.com','2020-02-27 03:38:49','2020-02-27 03:38:49'),
 	(7,'John','Wayne','jwayne@example.com','2020-02-27 03:39:13','2020-02-27 03:39:13'),
 	(8,'Jordan','Walke','jwalke@react.js','2020-02-27 03:40:22','2020-02-27 03:40:22'),
-	(9,'Brendan','Eich','b.eich@javascript.com','2020-02-27 06:50:15','2020-02-27 06:51:34');
+	(9,'Brendan','Eich','beich@javascript.com','2020-02-27 06:50:15','2020-02-27 06:57:55'),
+	(10,'James','Gosling','jgosling@java.com','2020-02-27 07:07:02','2020-02-27 07:07:02'),
+	(11,'Ken','Thompson','kthompson@unix.com','2020-02-27 07:10:36','2020-02-27 07:10:36');
 
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
