@@ -1,5 +1,6 @@
 <?php
 
+use App\Users;
 use Illuminate\Http\Request;
 
 /*
@@ -14,3 +15,9 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/users', 'UsersApiController@getAllUsers');
+
+Route::post('/users/create', 'UsersApiController@create');
+
+Route::get('/users/{userID}', 'UsersApiController@getUser');
+
+Route::post('/users/update/{user}', 'UsersApiController@updateUser');
