@@ -2,8 +2,9 @@
 
 @section('content')
 
-  <div class="row flex-column content view-users">
+  <div class="row flex-column content view-users links">
     <h1 class="col-12">All Users</h1>
+    <a class="offset-5 col-2 text-center" href="/users/create">Create User</a>
   </div>
 
   @if (session()->has('message'))
