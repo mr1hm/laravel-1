@@ -98,7 +98,6 @@ Kevins-MacBook-Pro:laravel-1 kevinihm$
   ```
   - Now, any project existing in this folder will accessible in our browser through http://_{directory name}_.test
 - If you're looking for some extra information you can visit this [link](https://laravel.com/docs/5.8/valet) and read through the installation section.
-- If you would like to view a simple front-end that I built for the API, you can click [here](http://laravel-1.test) to open it in your browser.
 
 ## Getting Started
 
@@ -124,6 +123,7 @@ Kevins-MacBook-Pro:laravel-1 kevinihm$
 - User can view all current users in the database.
 - User can create a user.
 - User can update a user.
+- If you would like to view a simple front-end that I built for the API, you can click [here](http://laravel-1.test) to open it in your browser.
 
 
 ## Server API
