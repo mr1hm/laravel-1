@@ -33,4 +33,7 @@ Route::get('/users/{user}/edit', 'UsersController@edit');
 
 Route::post('/users/update/{user}', 'UsersController@update');
 
-?>
+// If you would like to use the method override way using {{ method_field('PATCH') }}:
+// 1. Navigate to the edit.blade.php file and uncomment the line of code that says {{ method_field('PATCH') }}.
+// 2. Comment out the Route::post('/users/update/{user}', ...) and uncomment the line of code underneath.
+// Route::patch('/users/update/{user}', 'UsersApiController@update');
