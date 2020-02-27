@@ -28,17 +28,17 @@ php artisan serve
 Installing Valet is very quick and easy.
 - Please make sure the `~/.composer/vendor/bin` directory is in your system's "PATH".
 - In terminal:
-```shell
-composer global require laravel/valet
-```
+  ```shell
+  composer global require laravel/valet
+  ```
 - Next, we will install Valet and DnsMasq, and register Valet's daemon to launch when your system starts. We can achieve this by running this simple command:
-```shell
-valet install
-```
+  ```shell
+  valet install
+  ```
 - To make sure Valet is working, you can ping any *.test domain through terminal:
-```shell
-ping cool.test
-```
+  ```shell
+  ping cool.test
+  ```
 ##### Example Output From Ping
 ```shell
 Kevins-MacBook-Pro:laravel-1 kevinihm$ ping cool.test
