@@ -14,7 +14,7 @@ php artisan serve
   ```shell
   Laravel development server started: http://127.0.0.1:8000
   ```
-You can simply visit http://localhost:8000 and you should see some rendered HTML.
+- You can simply visit http://localhost:8000 and you should see some rendered HTML.
 - If you do not have MySQL installed on your machine, you can use homebrew to install it:
 ```shell
 brew install mysql
