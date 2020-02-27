@@ -5,6 +5,7 @@ A PHP Laravel CRUD API Backend utilizing a MySQL Database.
 ## Introduction
 
 For this project, I will assume that PHP, Composer and MySQL are already installed on your machine.
+- First, please clone this repository to a directory of your choice.
 - I used Valet (Mac OS _only_) as my dev environment. If you are on windows, you can simply use:
 ```shell
 php artisan serve
@@ -61,7 +62,6 @@ Kevins-MacBook-Pro:laravel-1 kevinihm$
 
 ## Getting Started
 
-1. Clone this repository to a directory of your choice.
 1. Install all dependencies in `composer.json` with Composer.
     ```bash
     composer install
