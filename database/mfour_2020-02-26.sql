@@ -7,7 +7,7 @@
 #
 # Host: localhost (MySQL 5.7.29)
 # Database: mfour
-# Generation Time: 2020-02-27 00:19:04 +0000
+# Generation Time: 2020-02-27 06:52:05 +0000
 # ************************************************************
 
 
@@ -82,28 +82,15 @@ LOCK TABLES `users` WRITE;
 
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `created_at`, `updated_at`)
 VALUES
-	(1,'Kevin','Ihm','kevinihm2@gmail.com','2020-02-25 11:32:44','2020-02-26 19:47:15'),
-	(2,'John','Smith','jsmith@example.com','2020-02-25 12:09:43',NULL),
-	(3,'Jane1','Doe','jdoe@example.com','2020-02-25 12:09:59','2020-02-27 00:02:13'),
-	(4,'Peter','Blade','pblade@users.com','2020-02-25 12:10:23',NULL),
-	(5,'Jack','Frost','jackfrost@christmas.com','2020-02-25 12:10:47',NULL),
-	(6,'Buzz','Lightyear','andbeyond@ts.com','2020-02-25 12:11:59',NULL),
-	(7,'Harold','Klein','hklein1234@cool.com','2020-02-25 12:12:55',NULL),
-	(8,'Liam','Clarke','clarkey@heroku.com','2020-02-25 23:32:54','2020-02-25 23:32:54'),
-	(9,'Colm','Clarke','cclarkey@herok123.com','2020-02-25 23:37:39','2020-02-25 23:37:39'),
-	(10,'Dane','Pastel','dmp@ca.com','2020-02-25 23:38:21','2020-02-25 23:38:21'),
-	(13,'Friedrich','Nietzsche','fnietzsche@philosophy.com','2020-02-26 07:06:28','2020-02-26 07:06:28'),
-	(16,'Taylor','Otwell','totwell@laravel.com','2020-02-26 07:16:07','2020-02-26 07:16:07'),
-	(21,'Spider','Man','spidey@spider.com','2020-02-26 20:00:33','2020-02-26 20:00:33'),
-	(22,'Spider2','Man','spidey2@spider.com','2020-02-26 20:01:20','2020-02-26 20:01:20'),
-	(24,'Spider3','Man','spidey3@spider.com','2020-02-26 20:02:21','2020-02-26 20:02:21'),
-	(26,'Spider4','Man','spidey4@spider.com','2020-02-26 20:02:51','2020-02-26 20:02:51'),
-	(28,'Uzair','Ashraf','uzair.ashraf@aol.com','2020-02-26 22:55:31','2020-02-26 22:55:31'),
-	(29,'apiTest','random','random1@one.com','2020-02-26 23:11:27','2020-02-26 23:11:27'),
-	(31,'apiTest2','random2','random2@one.com','2020-02-26 23:14:31','2020-02-26 23:14:31'),
-	(32,'hello','goodbye','test2@let.com','2020-02-26 23:17:55','2020-02-26 23:17:55'),
-	(36,'hello','goodbye','test3@let.com','2020-02-26 23:19:38','2020-02-26 23:19:38'),
-	(37,'hello','goodbye','test4@let.com','2020-02-26 23:22:16','2020-02-26 23:22:16');
+	(1,'Kevin','Ihm','kevinihm@gmail.com','2020-02-27 03:35:59','2020-02-27 03:35:59'),
+	(2,'Taylor','Otwell','totwell@laravel.com','2020-02-27 03:36:32','2020-02-27 03:36:32'),
+	(3,'Bill','Gates','bgates@microsoft.com','2020-02-27 03:37:45','2020-02-27 03:37:45'),
+	(4,'Mahatma','Gandhi','mgandhi9@example.com','2020-02-27 03:38:17','2020-02-27 03:38:17'),
+	(5,'John','Smith','jsmith@example.com','2020-02-27 03:38:37','2020-02-27 03:38:37'),
+	(6,'Jane','Doe','jdoe@example.com','2020-02-27 03:38:49','2020-02-27 03:38:49'),
+	(7,'John','Wayne','jwayne@example.com','2020-02-27 03:39:13','2020-02-27 03:39:13'),
+	(8,'Jordan','Walke','jwalke@react.js','2020-02-27 03:40:22','2020-02-27 03:40:22'),
+	(9,'Brendan','Eich','b.eich@javascript.com','2020-02-27 06:50:15','2020-02-27 06:51:34');
 
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
